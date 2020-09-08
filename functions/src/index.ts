@@ -1,4 +1,5 @@
 import * as functions from 'firebase-functions';
+import { Poll } from './models/Models';
 const cors = require('cors')({origin: true});
 
 // // Start writing Firebase Functions
@@ -11,10 +12,17 @@ export const helloWorld = functions.https.onRequest((request, response) => {
 
 export const createPoll = functions.https.onRequest((request, response) => {
    cors(request, response, () => {
-      // should create a new Poll
-   
-      // Should write it to the database
+      try {
+         // Should create a new poll
+         let poll = new Poll(request.body.poll);
 
-      // Should return a response or an error.
+         // Should write it to the database
+
+         // Should return a response or an error.
+
+         response.json(poll);
+      } catch(err)  {
+         response.json({error: err.toString()});
+      }
    })
 });
