@@ -4,6 +4,11 @@ import * as functions from 'firebase-functions';
 import * as admin from 'firebase-admin';
 admin.initializeApp();
 const db = admin.firestore();
+const collections = {polls: 'polls'}
+
+const serialize = (customObject: Object) : Object => {
+   return JSON.parse(JSON.stringify(customObject));
+}
 
 // // Start writing Firebase Functions
 // // https://firebase.google.com/docs/functions/typescript
@@ -18,12 +23,10 @@ export const createPoll = functions.https.onRequest((request, response) => {
       try {
          // Should create a new poll
          let poll = new Poll(request.body.poll);
-
          // Should write it to the database
-
-         // Should return a response or an error.
-
-         response.json(poll);
+         db.collection(collections.polls).add(serialize(poll))
+            .then(value => response.json(value)) // Should return a response or an error.
+            .catch(err => functions.logger.error(err));
       } catch(err)  {
          response.json({error: err.toString()});
       }
