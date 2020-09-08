@@ -1,6 +1,9 @@
-import * as functions from 'firebase-functions';
-import { Poll } from './models/Models';
 const cors = require('cors')({origin: true});
+import { Poll } from './models/Models';
+import * as functions from 'firebase-functions';
+import * as admin from 'firebase-admin';
+admin.initializeApp();
+const db = admin.firestore();
 
 // // Start writing Firebase Functions
 // // https://firebase.google.com/docs/functions/typescript
