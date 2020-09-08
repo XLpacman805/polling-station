@@ -10,7 +10,7 @@ interface poll {
     expiry: Date;
 }
 
-export default class Poll implements poll {
+class Poll implements poll {
     id: string;
     pollTitle: string;
     options: Array<option>;
@@ -23,3 +23,5 @@ export default class Poll implements poll {
     }
 
 }
+
+export { Poll };
