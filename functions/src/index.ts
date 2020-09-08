@@ -11,6 +11,10 @@ export const helloWorld = functions.https.onRequest((request, response) => {
 
 export const createPoll = functions.https.onRequest((request, response) => {
    cors(request, response, () => {
-      
+      // should create a new Poll
+   
+      // Should write it to the database
+
+      // Should return a response or an error.
    })
 });
