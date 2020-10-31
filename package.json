@@ -4,10 +4,10 @@
   "description": "A progressive web application where users can view, create, and vote on polls.",
   "main": "index.js",
   "scripts": {
-    "dev:frontend" : "npm run start --prefix ./frontend/",
-    "dev:functions" : "npm run dev --prefix ./functions/",
-    "deploy:frontend" : "firebase deploy --only hosting",
-    "deploy:functions" : "firebase deploy --only functions",
+    "dev:frontend": "npm run start --prefix ./frontend/",
+    "dev:functions": "npm run dev --prefix ./functions/",
+    "deploy:frontend": "firebase deploy --only hosting",
+    "deploy:functions": "firebase deploy --only functions",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
