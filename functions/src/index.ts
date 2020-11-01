@@ -32,3 +32,11 @@ export const createPoll = functions.https.onRequest((request, response) => {
       }
    })
 });
+
+export const authenticate = functions.https.onRequest((request, response) => {
+   admin.initializeApp({
+      credential: admin.credential.applicationDefault(),
+      databaseURL: "https://polling-station-488.firebaseio.com"
+    });
+   response.send("Hello from Firebase!");
+});
