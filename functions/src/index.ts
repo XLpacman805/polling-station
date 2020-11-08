@@ -1,5 +1,5 @@
 const cors = require('cors')({origin: true});
-import { Poll } from './models/Models';
+import { Poll } from '../../shared/models/Models';
 import * as functions from 'firebase-functions';
 import * as admin from 'firebase-admin';
 admin.initializeApp();
