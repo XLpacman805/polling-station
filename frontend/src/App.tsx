@@ -4,6 +4,7 @@ import { Router } from "@reach/router"; //, Link
 
 import Home from './components/Home';
 import SignIn from './components/SignIn';
+import CreatePoll from './components/CreatePoll';
 
 class App extends React.Component {
   constructor(props: any) {
@@ -16,6 +17,7 @@ class App extends React.Component {
       <Router>
         <Home path="/" />
         <SignIn path="/sign-in" />
+        <CreatePoll path="/create-poll" />
       </Router>
     );
   }
