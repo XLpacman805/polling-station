@@ -13,7 +13,7 @@ firebase.default.initializeApp({
 
  // FirebaseUI config.
  const uiConfig = {
-  signInSuccessUrl: '<url-to-redirect-to-on-success>',
+  signInSuccessUrl: '/dashboard',
   signInOptions: [
     // Leave the lines as is for the providers you want to offer your users.
     firebase.default.auth.EmailAuthProvider.PROVIDER_ID,
