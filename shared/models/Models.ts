@@ -1,3 +1,5 @@
+import { type } from "os";
+
 interface option {
     text: string,
     count: number
@@ -27,4 +29,4 @@ class Poll implements poll {
 
 }
 
-export { Poll };
+export type { Poll, poll, option }

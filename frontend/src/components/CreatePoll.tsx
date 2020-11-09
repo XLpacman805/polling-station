@@ -1,9 +1,10 @@
 import React from 'react';
 import { RouteComponentProps } from '@reach/router';
 import Navigation from './Navigation';
+import { option } from '../../../shared/models/Models';
 
 interface State {
-    optionCount: number;
+    options: Array<option>
 };
 
 /**
@@ -15,31 +16,24 @@ class CreatePoll extends React.Component<RouteComponentProps, State> {
     constructor(props: RouteComponentProps) {
         super(props);
         this.state = {
-            optionCount : 2
+            options: [ {text: '', count: 0}, {text: '', count: 0} ]
         }
         this.addOption = this.addOption.bind(this);
     }
 
     addOption() {
-        this.setState({optionCount: this.state.optionCount +1});
+        this.setState({options: this.state.options.concat([{text: '', count: 0}])});
     }
 
     render() {
-        let myOptions : Array<any> = [];
-        let pollOption = (index: number) => {
+        let pollOption = (option: option, index: number) => {
             return (
                 <div id={'poll-fieldset' + index.toString()}>
                     <label htmlFor={'poll-option' + index.toString()}>Poll Option: </label>
-                    <input type="text" id={'poll-option' + index.toString()} name={'poll-option' + index.toString()}></input>
-                    <button onClick={() => removeOption(index)}> <span role="img" aria-label="Remove poll option">🗑️</span> </button>
+                    <input type="text" id={'poll-option' + index.toString()} name={'poll-option' + index.toString()} value={option.text}></input>
+                    <span role="img" aria-label="Remove poll option">🗑️</span>
                 </div>
             )
-        }
-        let removeOption = (index: number) => {
-            myOptions.splice(index, 1);
-        }
-        for (let i = 0; i < this.state.optionCount; i++) {
-            myOptions.push(pollOption(i));
         }
         return (
             <div>
@@ -47,7 +41,9 @@ class CreatePoll extends React.Component<RouteComponentProps, State> {
                 <form>
                     <label htmlFor="poll-title">Poll Title</label>
                     <input name="poll-title" id="poll-title" type="text"></input>
-                    { myOptions.map( element => { return element }) }
+                    { this.state.options.map((option, index ) => {
+                        return pollOption(option, index);
+                    })}
                 </form>
 
                 <button onClick={this.addOption}>Add Field</button>
